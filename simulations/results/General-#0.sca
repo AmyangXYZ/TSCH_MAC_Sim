@@ -1,0 +1,268 @@
+version 2
+run General-0-20201128-15:26:34-29524
+attr configname General
+attr datetime 20201128-15:26:34
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network sim
+attr processid 29524
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.n[0].isRoot true
+param **.n[1].parent 0
+param **.n[2].parent 0
+param **.n[3].parent 1
+param **.n[4].parent 0
+param **.n[5].parent 0
+param **.n[6].parent 5
+param **.n[7].parent 2
+param **.n[8].parent 1
+param **.n[9].parent 5
+
+scalar sim.n[0].sink "latency of Node9:mean" 400
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node9:max" 400
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node9:min" 400
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node8:mean" 460
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node8:max" 460
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node8:min" 460
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node7:mean" 420
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node7:max" 420
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node7:min" 420
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node6:mean" 660
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node6:max" 660
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node6:min" 660
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node5:mean" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node5:max" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node5:min" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node4:mean" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node4:max" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node4:min" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node3:mean" 680
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node3:max" 680
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node3:min" 680
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node2:mean" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node2:max" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node2:min" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node1:mean" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node1:max" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node1:min" 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink "latency of Node0:mean" nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink "latency of Node0:max" nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink "latency of Node0:min" nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[0].sink latencyAll:mean 290.49040511727
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[0].sink latencyAll:max 680
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[0].sink latencyAll:min 0
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[1].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[1].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[1].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[2].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[2].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[2].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[3].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[3].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[3].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[4].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[4].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[4].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[5].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[5].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[5].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[6].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[6].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[6].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[7].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[7].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[7].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[8].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[8].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[8].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+scalar sim.n[9].sink latencyAll:mean nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, mean"
+attr unit ms
+scalar sim.n[9].sink latencyAll:max nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, max"
+attr unit ms
+scalar sim.n[9].sink latencyAll:min nan
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, min"
+attr unit ms
+

@@ -1,13 +1,13 @@
 ../out/clang-release/src/TXM.o: TXM.cc TXM.h \
   C:/Users/Amyang/Downloads/omnetpp-5.6.2-src-windows/omnetpp-5.6.2/include\omnetpp.h \
-  Job_m.h ASN.h Source.h
+  ACM.h Job_m.h Source.h
 
 TXM.h:
 
 C:/Users/Amyang/Downloads/omnetpp-5.6.2-src-windows/omnetpp-5.6.2/include\omnetpp.h:
 
-Job_m.h:
+ACM.h:
 
-ASN.h:
+Job_m.h:
 
 Source.h:

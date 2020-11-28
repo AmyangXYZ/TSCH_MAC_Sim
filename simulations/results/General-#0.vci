@@ -1,0 +1,79 @@
+file 37622 1606591598                                           
+version 2
+run General-0-20201128-15:26:34-29524
+attr configname General
+attr datetime 20201128-15:26:34
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network sim
+attr processid 29524
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.n[0].isRoot true
+param **.n[1].parent 0
+param **.n[2].parent 0
+param **.n[3].parent 1
+param **.n[4].parent 0
+param **.n[5].parent 0
+param **.n[6].parent 5
+param **.n[7].parent 2
+param **.n[8].parent 1
+param **.n[9].parent 5
+
+vector 0 sim.n[0].sink latencyAll:vector ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 1 sim.n[0].sink "latency of Node5:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 2 sim.n[0].sink "latency of Node4:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 3 sim.n[0].sink "latency of Node2:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 4 sim.n[0].sink "latency of Node1:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 5 sim.n[0].sink "latency of Node9:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 6 sim.n[0].sink "latency of Node7:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 7 sim.n[0].sink "latency of Node8:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 8 sim.n[0].sink "latency of Node6:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+vector 9 sim.n[0].sink "latency of Node3:vector" ETV
+attr interpolationmode none
+attr title "e2e latency of arrived jobs, vector"
+attr unit ms
+0	2072 17774 128 104774 0.104 99.964 938 0 680 272480 150384000
+1	19846 1873 128 104752 0.104 99.944 105 0 0 0 0
+2	21719 1873 150 104774 0.124 99.964 105 0 0 0 0
+3	23592 1854 194 103812 0.164 99.044 104 0 0 0 0
+4	25446 1854 216 103834 0.184 99.064 104 0 0 0 0
+5	27300 2064 458 104076 0.424 99.304 104 400 400 41600 16640000
+6	29364 2064 520 104138 0.484 99.364 104 420 420 43680 18345600
+7	31428 2064 542 104160 0.504 99.384 104 460 460 47840 22006400
+8	33492 2064 784 104402 0.744 99.624 104 660 660 68640 45302400
+9	35556 2064 866 104484 0.824 99.704 104 680 680 70720 48089600
+

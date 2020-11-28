@@ -15,19 +15,37 @@
 
 #include "Sink.h"
 
+extern int ASN;
+
 namespace tsch {
 
 Define_Module(Sink);
 
 void Sink::initialize()
 {
+    if(this->getParentModule()->par("isRoot"))
+    {
+        latencySignalAll = registerSignal("latencyAll");
+        for(int i=0;i<10;i++)
+        {
+            char signalName[32];
+            sprintf(signalName, "latency of Node%d", i);
+            simsignal_t signal = registerSignal(signalName);
+            cProperty *statisticTemplate = getProperties()->get("statisticTemplate", "latencyTemplate");
+            getEnvir()->addResultRecorders(this, signal, signalName,  statisticTemplate);
+            latencySignals[i] = signal;
+        }
+    }
 }
 
 void Sink::handleMessage(cMessage *msg)
 {
-    Job* job = check_and_cast<Job *>(msg);
-    EV << "received a msg" << endl;
-    // TODO add counters
+    if(this->getParentModule()->par("isRoot"))
+    {
+        Job* job = check_and_cast<Job *>(msg);
+        emit(latencySignalAll, (ASN - job->getSentASN())*SLOT_DURATION*1000);
+        emit(latencySignals[job->getSrc()], (ASN - job->getSentASN())*SLOT_DURATION*1000);
+    }
 }
 
 } //namespace

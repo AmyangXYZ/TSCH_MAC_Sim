@@ -186,6 +186,7 @@ Job::Job(const char *name, short kind) : ::omnetpp::cPacket(name,kind)
     this->dst = 0;
     this->type = 0;
     this->priority = 0;
+    this->sentASN = 0;
     for (unsigned int i=0; i<128; i++)
         this->payload[i] = 0;
 }
@@ -213,6 +214,7 @@ void Job::copy(const Job& other)
     this->dst = other.dst;
     this->type = other.type;
     this->priority = other.priority;
+    this->sentASN = other.sentASN;
     for (unsigned int i=0; i<128; i++)
         this->payload[i] = other.payload[i];
 }
@@ -224,6 +226,7 @@ void Job::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->dst);
     doParsimPacking(b,this->type);
     doParsimPacking(b,this->priority);
+    doParsimPacking(b,this->sentASN);
     doParsimArrayPacking(b,this->payload,128);
 }
 
@@ -234,6 +237,7 @@ void Job::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->dst);
     doParsimUnpacking(b,this->type);
     doParsimUnpacking(b,this->priority);
+    doParsimUnpacking(b,this->sentASN);
     doParsimArrayUnpacking(b,this->payload,128);
 }
 
@@ -275,6 +279,16 @@ int Job::getPriority() const
 void Job::setPriority(int priority)
 {
     this->priority = priority;
+}
+
+int Job::getSentASN() const
+{
+    return this->sentASN;
+}
+
+void Job::setSentASN(int sentASN)
+{
+    this->sentASN = sentASN;
 }
 
 unsigned int Job::getPayloadArraySize() const
@@ -359,7 +373,7 @@ const char *JobDescriptor::getProperty(const char *propertyname) const
 int JobDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 5+basedesc->getFieldCount() : 5;
+    return basedesc ? 6+basedesc->getFieldCount() : 6;
 }
 
 unsigned int JobDescriptor::getFieldTypeFlags(int field) const
@@ -375,9 +389,10 @@ unsigned int JobDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,
         FD_ISEDITABLE,
         FD_ISEDITABLE,
+        FD_ISEDITABLE,
         FD_ISARRAY | FD_ISEDITABLE,
     };
-    return (field>=0 && field<5) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<6) ? fieldTypeFlags[field] : 0;
 }
 
 const char *JobDescriptor::getFieldName(int field) const
@@ -393,9 +408,10 @@ const char *JobDescriptor::getFieldName(int field) const
         "dst",
         "type",
         "priority",
+        "sentASN",
         "payload",
     };
-    return (field>=0 && field<5) ? fieldNames[field] : nullptr;
+    return (field>=0 && field<6) ? fieldNames[field] : nullptr;
 }
 
 int JobDescriptor::findField(const char *fieldName) const
@@ -406,7 +422,8 @@ int JobDescriptor::findField(const char *fieldName) const
     if (fieldName[0]=='d' && strcmp(fieldName, "dst")==0) return base+1;
     if (fieldName[0]=='t' && strcmp(fieldName, "type")==0) return base+2;
     if (fieldName[0]=='p' && strcmp(fieldName, "priority")==0) return base+3;
-    if (fieldName[0]=='p' && strcmp(fieldName, "payload")==0) return base+4;
+    if (fieldName[0]=='s' && strcmp(fieldName, "sentASN")==0) return base+4;
+    if (fieldName[0]=='p' && strcmp(fieldName, "payload")==0) return base+5;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -423,9 +440,10 @@ const char *JobDescriptor::getFieldTypeString(int field) const
         "int",
         "int",
         "int",
+        "int",
         "char",
     };
-    return (field>=0 && field<5) ? fieldTypeStrings[field] : nullptr;
+    return (field>=0 && field<6) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **JobDescriptor::getFieldPropertyNames(int field) const
@@ -464,7 +482,7 @@ int JobDescriptor::getFieldArraySize(void *object, int field) const
     }
     Job *pp = (Job *)object; (void)pp;
     switch (field) {
-        case 4: return 128;
+        case 5: return 128;
         default: return 0;
     }
 }
@@ -497,7 +515,8 @@ std::string JobDescriptor::getFieldValueAsString(void *object, int field, int i)
         case 1: return long2string(pp->getDst());
         case 2: return long2string(pp->getType());
         case 3: return long2string(pp->getPriority());
-        case 4: return long2string(pp->getPayload(i));
+        case 4: return long2string(pp->getSentASN());
+        case 5: return long2string(pp->getPayload(i));
         default: return "";
     }
 }
@@ -516,7 +535,8 @@ bool JobDescriptor::setFieldValueAsString(void *object, int field, int i, const 
         case 1: pp->setDst(string2long(value)); return true;
         case 2: pp->setType(string2long(value)); return true;
         case 3: pp->setPriority(string2long(value)); return true;
-        case 4: pp->setPayload(i,string2long(value)); return true;
+        case 4: pp->setSentASN(string2long(value)); return true;
+        case 5: pp->setPayload(i,string2long(value)); return true;
         default: return false;
     }
 }

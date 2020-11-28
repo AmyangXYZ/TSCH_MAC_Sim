@@ -15,12 +15,13 @@
 
 package tsch;
 
-// TX module, include queuing and routing.
+// TX module, include queuing, scheduling and routing.
 simple TXM
 {
     parameters:
         int queueCapacity = default(16);
+        int queueNum = default(4);
     gates:
-        input in[2]; // 0 from source, 1 from classifier
+        input in[2]; // 0 from source, 1 from rx
         output out[];
 }

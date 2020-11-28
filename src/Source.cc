@@ -38,7 +38,7 @@ void Source::handleMessage(cMessage *msg)
         {
             send(job, "out");
         }
-        scheduleAt(simTime()+SLOT_DURATION*SLOTFRAME_LEN, new cMessage("dummy"));
+        scheduleAt(simTime()+SLOT_DURATION*SLOTFRAME_LEN*3, new cMessage("dummy"));
     }
 }
 

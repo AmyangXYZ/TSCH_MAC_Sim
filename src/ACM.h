@@ -13,10 +13,30 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package tsch;
+#ifndef __TSCH_ACM_H_
+#define __TSCH_ACM_H_
 
+#include <omnetpp.h>
 
-simple ASN
+#define SLOT_DURATION 0.01
+#define SLOTFRAME_LEN 32
+#define CHANNELS 2
+
+using namespace omnetpp;
+
+namespace tsch {
+
+/**
+ * TODO - Generated class
+ */
+class ACM : public cSimpleModule
 {
-    @display("i=block/timer");
-}
+  protected:
+    virtual void initialize();
+    virtual void handleMessage(cMessage *msg);
+    virtual void refreshDisplay() const override;
+};
+
+} //namespace
+
+#endif

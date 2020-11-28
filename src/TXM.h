@@ -17,12 +17,25 @@
 #define __TSCH_TXM_H_
 
 #include <omnetpp.h>
+
+#include "ACM.h"
 #include "Job_m.h"
-#include "ASN.h"
 #include "Source.h"
 
 using namespace omnetpp;
 
+#define CELL_IDLE 0
+#define CELL_RX 1
+#define CELL_TX 2
+#define CELL_UPLINK 0
+#define CELL_DOWNLINK 1
+
+struct cell {
+    int Opt; // idle 0, rx 1, tx 2
+    int Type; // uplink 0, downlink 1;
+    int Sender;
+    int Receiver;
+};
 
 namespace tsch {
 
@@ -33,15 +46,20 @@ class TXM : public cSimpleModule
 {
   protected:
     simtime_t nextWakeUpTime;
-    cQueue queue;
-
+    cQueue queue[4];
     int nodeId;
     int parentId;
+    cell schedule[SLOTFRAME_LEN][CHANNELS];
+
+    long numSent;
+
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);
 
+    virtual void initSchedule();
+    virtual int classify(Job *job);
     virtual int checkSchedule();
-
+    virtual void refreshDisplay() const override;
 };
 
 } //namespace

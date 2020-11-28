@@ -15,7 +15,7 @@
 
 package tsch.simulations;
 
-import tsch.ASN;
+import tsch.ACM;
 import tsch.Node;
 
 network sim
@@ -24,11 +24,11 @@ network sim
     types:
         channel Channel extends ned.DelayChannel
         {
-            delay = 0ms;
+            delay = 4ms;
         }
 
     submodules:
-        asn: ASN;
+        acm: ACM;
         n[10]: Node;
     connections:
         n[1].out++ --> Channel --> n[0].in++;

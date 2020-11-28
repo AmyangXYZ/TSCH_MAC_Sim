@@ -18,6 +18,7 @@
 
 #include <omnetpp.h>
 #include "Job_m.h"
+#include "ACM.h"
 
 using namespace omnetpp;
 
@@ -28,6 +29,9 @@ namespace tsch {
  */
 class Sink : public cSimpleModule
 {
+  private:
+    simsignal_t latencySignalAll;
+    simsignal_t latencySignals[10];
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);

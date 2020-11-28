@@ -13,18 +13,20 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#include "ASN.h"
+#include "ACM.h"
+
+int ASN;
 
 namespace tsch {
 
-Define_Module(ASN);
+Define_Module(ACM);
 
-void ASN::initialize()
+void ACM::initialize()
 {
     scheduleAt(0+SLOT_DURATION, new cMessage("dummy"));
 }
 
-void ASN::handleMessage(cMessage *msg)
+void ACM::handleMessage(cMessage *msg)
 {
     if(msg->isSelfMessage())
     {
@@ -33,9 +35,11 @@ void ASN::handleMessage(cMessage *msg)
     }
 }
 
-int ASN::getASN()
+void ACM::refreshDisplay() const
 {
-    return ASN;
+    char buf[40];
+    sprintf(buf, "ASN: %d", ASN);
+    getDisplayString().setTagArg("t", 0, buf);
 }
 
 } //namespace

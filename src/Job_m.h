@@ -31,6 +31,7 @@ namespace tsch {
  *     int dst;
  *     int type;
  *     int priority;
+ *     int sentASN;
  *     char payload[128];
  * }
  * </pre>
@@ -42,6 +43,7 @@ class Job : public ::omnetpp::cPacket
     int dst;
     int type;
     int priority;
+    int sentASN;
     char payload[128];
 
   private:
@@ -69,6 +71,8 @@ class Job : public ::omnetpp::cPacket
     virtual void setType(int type);
     virtual int getPriority() const;
     virtual void setPriority(int priority);
+    virtual int getSentASN() const;
+    virtual void setSentASN(int sentASN);
     virtual unsigned int getPayloadArraySize() const;
     virtual char getPayload(unsigned int k) const;
     virtual void setPayload(unsigned int k, char payload);

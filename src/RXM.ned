@@ -22,5 +22,5 @@ simple RXM
         
     gates:
         input in[];
-        output out[2]; // 0 to sink, 1 to forwarder
+        output out[2]; // 0 to sink, 1 to tx
 }

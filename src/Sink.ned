@@ -19,7 +19,10 @@ package tsch;
 simple Sink
 {
     parameters:
-
+		@signal[latencyAll](type="simtime_t");
+		@signal[latency*](type="simtime_t");
+		@statistic[latencyAll](title="e2e latency of arrived jobs";unit=ms;record=vector,mean,max,min;interpolationmode=none);
+		@statisticTemplate[latencyTemplate](title="e2e latency of arrived jobs";unit=ms;record=vector,mean,max,min;interpolationmode=none);
     gates:
         input in;
 }

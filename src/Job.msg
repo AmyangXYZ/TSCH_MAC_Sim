@@ -23,5 +23,6 @@ packet Job {
     int dst;
     int type;
     int priority;
+    int sentASN;
  	char payload[128];
 }

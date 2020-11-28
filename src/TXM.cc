@@ -14,16 +14,24 @@
 // 
 
 #include "TXM.h"
+
+extern int ASN;
+
 namespace tsch {
 
 Define_Module(TXM);
 
 void TXM::initialize()
 {
+    numSent = 0;
     nodeId = this->getParentModule()->getIndex();
     parentId = this->getParentModule()->par("parent").intValue();
 
-    queue.setName("queue");
+    initSchedule();
+
+    for(int i=0;i<par("queueNum").intValue();i++)
+        queue[i].setName("queue");
+
     nextWakeUpTime = -1;
 }
 
@@ -33,12 +41,13 @@ void TXM::handleMessage(cMessage *msg)
     {
         // insert to pkt queue
         Job *job = check_and_cast<Job *>(msg);
-        queue.insert(job);
+        int queueIndex = classify(job);
+        queue[queueIndex].insert(job);
     }
 
-    if(checkSchedule()!=-1 && !queue.isEmpty())
+    if(checkSchedule()!=-1 && !queue[1].isEmpty())
     {
-        Job *job = (Job *)queue.pop();
+        Job *job = (Job *)queue[1].pop();
 
         int nextHop;
         if(job->getDst() == 0)
@@ -54,38 +63,68 @@ void TXM::handleMessage(cMessage *msg)
 
             if(neighbor == nextHop)
             {
-                EV << "[+]" << simTime() << " send out " << " " << nodeId << "->" << nextHop  << endl;
+                EV << "[+]ASN: " << ASN << " - #" << nodeId << " sent " << job->getName() << " to #" << nextHop  << endl;
+                if(job->getSrc() == nodeId)
+                    job->setSentASN(ASN);
                 send(job, "out", g);
+                numSent++;
                 break;
             }
         }
     }
 
     // wake up again in the next slot
-    if(nextWakeUpTime!=simTime()+SLOT_DURATION)
+    if(nextWakeUpTime!=(ASN+1)*SLOT_DURATION)
     {
-        scheduleAt(simTime()+SLOT_DURATION, new cMessage("dummy"));
-        nextWakeUpTime = simTime()+SLOT_DURATION;
+        nextWakeUpTime = (ASN+1)*SLOT_DURATION;
+        scheduleAt(nextWakeUpTime, new cMessage("dummy"));
     }
 
 }
 
+
+void TXM::refreshDisplay() const
+{
+    char buf[40];
+    sprintf(buf, " sent: %ld", numSent);
+    this->getParentModule()->getDisplayString().setTagArg("t", 0, buf);
+}
+
+void TXM::initSchedule()
+{
+    for(int s=0; s<SLOTFRAME_LEN;s++)
+    {
+        if(s == (10-nodeId)*2)
+        {
+            for(int c=0;c<CHANNELS;c++)
+            {
+                if(c == 0)
+                {
+                    schedule[s][c] = {CELL_TX, CELL_UPLINK, nodeId, parentId};
+                }
+
+            }
+        }
+    }
+//    schedule[5][0] = {CELL_TX, CELL_UPLINK, 6, 5};
+//    schedule[5][1] = {CELL_TX, CELL_UPLINK, 3, 1};
+}
+
+int TXM::classify(Job *job)
+{
+    return job->getPriority();
+}
+
 int TXM::checkSchedule()
 {
+    int slot = ASN%SLOTFRAME_LEN;
+    for(int c=0;c<CHANNELS;c++)
+    {
+        if(schedule[slot][c].Opt == CELL_TX &&
+           schedule[slot][c].Sender == nodeId)
+            return 1;
+    }
 
-    ASN *asnModule = check_and_cast<ASN *>(this->getParentModule()->getParentModule()->getSubmodule("asn"));
-    int curASN = asnModule->getASN();
-
-//    localCell x = localSch[ curASN%SLOTFRAME_LEN ];
-//
-//    if(x.linkOpt == 1)
-//    {
-//        if(pktList[x.taskId]!=nullptr)
-//            return x.taskId;
-//    }
-
-    if(curASN%SLOTFRAME_LEN == (10-nodeId)*8)
-        return 1;
     return -1;
 }
 

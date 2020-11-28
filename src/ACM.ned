@@ -13,32 +13,11 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __TSCH_ASN_H_
-#define __TSCH_ASN_H_
+package tsch;
 
-#include <omnetpp.h>
+// Timeslot Access Manager
 
-#define SLOT_DURATION 0.01
-#define SLOTFRAME_LEN 100
-
-using namespace omnetpp;
-
-namespace tsch {
-
-/**
- * TODO - Generated class
- */
-class ASN : public cSimpleModule
+simple ACM
 {
-  public:
-    int getASN();
-    int ASN=0;
-  protected:
-
-    virtual void initialize();
-    virtual void handleMessage(cMessage *msg);
-};
-
-} //namespace
-
-#endif
+    @display("i=block/timer");
+}
